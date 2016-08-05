@@ -1,4 +1,4 @@
-# docker-cs-prometheus
+# docker-cs-prometheus-server
 containership promethius docker image
 
 ## Installation
