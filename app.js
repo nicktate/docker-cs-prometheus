@@ -31,6 +31,10 @@ configUtil.generateConfig((err, config) => {
                 `0.0.0.0:${+process.env.PROMETHEUS_PORT || 9090}`,
                 '-storage.local.memory-chunks',
 				`${+process.env.PROM_MEMORY_CHUNKS || 1048576}`,
+                '-storage.local.max-chunks-to-persist',
+				`${+process.env.PROM_MEMORY_MAX_CHUNKS_TO_PERSIST || 1048576}`,
+                '-storage.local.retention',
+				`${process.env.PROM_LOCAL_RETENTION || '360h'}`,
                 '-storage.local.path',
                 `${process.env.PROM_STORAGE_PATH || '/opt/containership/metrics/data'}`
     ]);
