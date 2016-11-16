@@ -17,13 +17,11 @@ sudo docker run \
 
 `PROMETHEUS_VERSION` - version of prometheus to run in the container (default: 1.3.1)
 
-`PROMETHEUS_PORT` - port for prometheus to run on (default:9090)
+`PROMETHEUS_CONFIG_REFRESH_INTERVAL` - refresh interval for prometheus to reload its configuration (default:30000, unit: ms)
 
-`PROM_REFRESH_INTERVAL` - refresh interval for prometheus to reload its configuration (default:15000, unit: ms)
+`PROMETHEUS_GLOBAL_SCRAPE_INTERVAL` - global default interval for prometheus to scrape metrics from agents (default:60s)
 
-`PROM_GLOBAL_SCRAPE_INTERVAL` - global default interval for prometheus to scrape metrics from agents (default:15s)
-
-`PROM_GLOBAL_EVALUATION_INTERVAL` - global default interval for prometheus to evaluation rules (default:15s)
+`PROMETHEUS_GLOBAL_EVALUATION_INTERVAL` - global default interval for prometheus to evaluation rules (default:60s)
 
 ## Prometheus Command Line Arguments
 

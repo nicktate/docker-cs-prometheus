@@ -61,5 +61,5 @@ configUtil.generateConfig((err, config) => {
             fs.writeFileSync(prometheusConfigPath, config);
             prometheus.kill('SIGHUP');
         });
-    }, +process.env.PROM_REFRESH_INTERVAL || 15000);
+    }, +process.env.PROMETHEUS_CONFIG_REFRESH_INTERVAL || 30000);
 });
