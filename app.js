@@ -1,6 +1,7 @@
 'use strict';
 
 const configUtil = require('./lib/config');
+const prometheusOptions = require('./lib/options');
 
 const _ = require('lodash');
 const fs = require('fs');
@@ -24,20 +25,21 @@ configUtil.generateConfig((err, config) => {
 
     fs.writeFileSync(prometheusConfigPath, config);
 
-    const prometheus = spawn(prometheusExecPath, [
-                '-config.file',
-                prometheusConfigPath,
-                '-web.listen-address',
-                `0.0.0.0:${+process.env.PROMETHEUS_PORT || 9090}`,
-                '-storage.local.memory-chunks',
-				`${+process.env.PROM_MEMORY_CHUNKS || 1048576}`,
-                '-storage.local.max-chunks-to-persist',
-				`${+process.env.PROM_MEMORY_MAX_CHUNKS_TO_PERSIST || 1048576}`,
-                '-storage.local.retention',
-				`${process.env.PROM_LOCAL_RETENTION || '360h'}`,
-                '-storage.local.path',
-                `${process.env.PROM_STORAGE_PATH || '/opt/containership/metrics/data'}`
-    ]);
+    const args = [];
+
+    _.forEach(prometheusOptions.options, option => {
+        const argValue = prometheusOptions.getOptionValue(
+                option.name,
+                option.name === 'config.file' ? prometheusExecPath : null // optional default
+        );
+
+        if (argValue !== null) {
+            args.push(`--${option.name}`);
+            args.push(argValue);
+        }
+    });
+
+    const prometheus = spawn(prometheusExecPath, args);
 
     prometheus.stdout.on('data', (data) => {
         process.stdout.write(data);
