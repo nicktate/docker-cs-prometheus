@@ -15,7 +15,7 @@ sudo docker run \
 
 ## Environment Variables
 
-`PROMETHEUS_VERSION` - version of prometheus to run in the container (default: 0.20.0)
+`PROMETHEUS_VERSION` - version of prometheus to run in the container (default: 1.3.1)
 
 `PROMETHEUS_PORT` - port for prometheus to run on (default:9090)
 
@@ -25,9 +25,15 @@ sudo docker run \
 
 `PROM_GLOBAL_EVALUATION_INTERVAL` - global default interval for prometheus to evaluation rules (default:15s)
 
-`PROM_STORAGE_PATH` - default local storage path for prometheus to store metric data (default:/opt/containership/metrics/data)
+## Prometheus Command Line Arguments
 
-`PROM_MEMORY_CHUNKS` - The number of most recently used chunks for prometheus to keep in memory. Each chunk is 1024 bytes, so base the number of chunks on the amount of RAM provided to the container. Prometheus suggests: As a rule of thumb, you should have at least three times more RAM available than needed by the memory chunks alone. (default: 1048576, unit: chunks)
+See https://github.com/prometheus/prometheus/blob/master/cmd/prometheus/config.go for available command line arguments.
+
+All arguments are overridable via environment variables under the convention of replacing `.` or `-` with `_` and prefixing with `PROMETHEUS_`.
+
+Example:
+`web.enable-remote-shutdown` -> `PROMETHEUS_WEB_ENABLE_REMOTE_SHUTDOWN`
+`storage.local.path` -> `PROMETHEUS_STORAGE_LOCAL_PATH`
 
 ## Roadmap
 
