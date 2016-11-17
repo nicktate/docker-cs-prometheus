@@ -30,7 +30,7 @@ configUtil.generateConfig((err, config) => {
     _.forEach(prometheusOptions.options, option => {
         const argValue = prometheusOptions.getOptionValue(
                 option.name,
-                option.name === 'config.file' ? prometheusExecPath : null // optional default
+                option.name === 'config.file' ? prometheusConfigPath : null // optional default
         );
 
         if (argValue !== null) {
