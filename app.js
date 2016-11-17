@@ -33,9 +33,13 @@ configUtil.generateConfig((err, config) => {
                 option.name === 'config.file' ? prometheusConfigPath : null // optional default
         );
 
-        if (argValue !== null) {
+        if (argValue !== null && argVaue !== 'false' && option.name !== 'version') {
             args.push(`--${option.name}`);
-            args.push(argValue);
+
+            // flag argument so don't push value
+            if (argValue !== 'true') {
+                args.push(argValue);
+            }
         }
     });
 
