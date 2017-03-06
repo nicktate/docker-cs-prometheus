@@ -7,7 +7,7 @@ containership promethius docker image
 ## Installation
 ```
 sudo docker run \
-         --net=host \
+         --net=bridge \
          --detach=true \
          --name=containership-prometheus \
          containership/docker-cs-prometheus:latest
