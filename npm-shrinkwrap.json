@@ -1,6 +1,6 @@
 {
   "name": "docker-cs-prometheus",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "dependencies": {
     "async": {
       "version": "2.1.2",
