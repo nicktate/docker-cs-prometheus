@@ -19,6 +19,7 @@
   "dependencies": {
     "async": "^2.0.0",
     "lodash": "^4.13.1",
-    "myriad-kv-client": "^0.4.1"
+    "myriad-kv-client": "^0.4.1",
+    "containership.api-factory": "file:../containership.api-factory"
   }
 }
