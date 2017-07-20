@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/containership/docker-cs-prometheus#readme",
   "dependencies": {
-    "async": "^2.0.0",
-    "lodash": "^4.13.1",
-    "@jeremykross/containership.api-factory": "git://github.com/jeremykross/containership.api-factory"
+    "async": "^2.5.0",
+    "lodash": "^4.17.4",
+    "@containership/containership.api-factory": "git://github.com/containership/containership.api-factory"
   }
 }
